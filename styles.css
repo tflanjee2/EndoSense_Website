@@ -1,0 +1,186 @@
+/*
+  EndoSense Landing Styles
+*/
+
+:root {
+  /* Brand palette */
+  --teal-600: #008489; /* primary */
+  --teal-700: #2C7D7D;
+  --teal-100: #A5D3DC;
+  --sand-50:  #FFF5EC;
+  --stone-50: #F7F7F6;
+  --slate-800:#343A3F;
+  --sage-200: #B8C8B5;
+
+  --bg: var(--stone-50);
+  --text: var(--slate-800);
+}
+
+/* Base */
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Avenir, "Poppins", "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui, -apple-system, sans-serif;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: min(1120px, 92%);
+  margin-inline: auto;
+}
+
+/* Header */
+.site-header {
+  background: white;
+  border-bottom: 1px solid color-mix(in srgb, var(--slate-800) 10%, transparent);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+.brand-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: clamp(460px, 70vh, 760px);
+  display: grid;
+  /* Keep content vertically centered, align left horizontally */
+  align-items: center;
+  justify-items: start;
+  isolation: isolate;
+  background-image: url("pexels-nutrisense-inc-683752192-17947693.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Fallback for browsers without color-mix */
+  background: linear-gradient(90deg,
+    rgba(0, 132, 137, 0.65) 0%,
+    rgba(0, 132, 137, 0.45) 35%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  /* Stronger left-side shading using brand teal */
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--teal-600) 65%, black 15%) 0%,
+    color-mix(in srgb, var(--teal-600) 45%, transparent) 35%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+.hero .container { 
+  /* Pull the content toward the left edge */
+  margin-inline: 0; 
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  color: white;
+  display: grid;
+  gap: 22px;
+  /* Narrower text block for better readability on image */
+  max-width: 640px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+
+.strapline {
+  margin: 0;
+  font-family: "Poppins", Avenir, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.cta {
+  justify-self: start;
+  background: var(--teal-600);
+  color: white;
+  text-decoration: none;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--teal-600) 35%, transparent);
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.cta:hover {
+  background: var(--teal-700);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--teal-700) 35%, transparent);
+}
+.cta:active { transform: translateY(0); }
+
+/* Info */
+.info { background: var(--sand-50); padding: 56px 0; }
+.section-title {
+  font-family: "Poppins", Avenir, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  margin: 0 0 12px;
+  color: var(--slate-800);
+}
+.lede {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--slate-800) 85%, white);
+}
+
+/* Footer */
+.site-footer { background: white; color: var(--slate-800); }
+.site-footer .container { padding: 20px 0; }
+.site-footer p { margin: 0; font-size: 14px; }
+
+@media (max-width: 640px) {
+  .header-inner { padding: 10px 0; }
+  .brand-logo { height: 34px; }
+  .hero-content { gap: 18px; }
+}
+
+/* Technology */
+.technology {
+  background: white;
+  padding: 64px 0;
+  border-top: 1px solid color-mix(in srgb, var(--slate-800) 8%, transparent);
+}
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: min(5vw, 48px);
+  align-items: center;
+}
+.tech-media { order: 1; }
+.tech-copy { order: 2; font-size: 18px; line-height: 1.65; }
+.tech-copy p { margin: 0; }
+.tech-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: var(--stone-50);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--slate-800) 18%, transparent);
+}
+
+@media (max-width: 960px) {
+  .tech-grid { grid-template-columns: 1fr; }
+  .tech-media { order: 1; }
+  .tech-copy { order: 2; }
+}
