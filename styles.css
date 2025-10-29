@@ -111,9 +111,9 @@ img { max-width: 100%; display: block; }
   position: relative;
   min-height: clamp(460px, 70vh, 760px);
   display: grid;
-  /* Keep content vertically centered, align left horizontally */
+  /* Vertically center; horizontally center the container */
   align-items: center;
-  justify-items: start;
+  justify-items: center;
   isolation: isolate;
   background-image: url("pexels-nutrisense-inc-683752192-17947693.jpg");
   background-size: cover;
