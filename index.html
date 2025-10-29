@@ -16,23 +16,34 @@
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <a href="#" class="brand" aria-label="EndoSense home">
+        <a href="#hero" class="brand" aria-label="EndoSense home">
           <img class="brand-logo" src="Screenshot%202025-10-16%20171428.png" alt="EndoSense logo" />
         </a>
+        <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">Menu</button>
+        <nav id="site-nav" class="nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="#perimenopause">Perimenopause</a></li>
+            <li><a class="nav-link" href="#technology">Technology</a></li>
+            <li><a class="nav-link" href="#supporters">Supporters</a></li>
+            <li><a class="nav-link" href="#about">About</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
 
     <main>
-      <section class="hero" aria-label="Hero">
+      <section id="hero" class="hero" aria-label="Hero">
         <div class="hero-overlay"></div>
-        <div class="container hero-content">
-          <h1 class="strapline">Empowering women with real-time, personalised information to manage their own menopause transition</h1>
-          <a class="cta" target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLSdUw6wFBptZCS-KoQK9SRLqznne33ULna_qP4IuuhEx15hTnQ/viewform?usp=sharing&ouid=104292981537251165866">Share your experience</a>
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="strapline">Empowering women with real-time, personalised information to manage their own menopause transition</h1>
+            <a class="cta" target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLSdUw6wFBptZCS-KoQK9SRLqznne33ULna_qP4IuuhEx15hTnQ/viewform?usp=sharing&ouid=104292981537251165866">Share your experience</a>
+          </div>
         </div>
         <!-- Banner background image set in CSS -->
       </section>
 
-      <section class="info" aria-label="About">
+      <section id="about" class="info" aria-label="About">
         <div class="container">
           <h2 class="section-title">About EndoSense</h2>
           <p class="lede">We’re building tools that put knowledge and control in women’s hands—helping each person navigate menopause with clarity, confidence, and care.</p>
@@ -102,7 +113,7 @@
         </div>
       </section>
 
-      <section class="supporters" aria-label="Supporters">
+      <section id="supporters" class="supporters" aria-label="Supporters">
         <div class="container">
           <h2 class="section-title center">We're proud to be supported by:</h2>
           <ul class="logo-row" aria-label="Supporter logos">
@@ -125,6 +136,21 @@
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('site-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+        nav.addEventListener('click', (e) => {
+          const target = e.target;
+          if (target && target.closest && target.closest('a')) {
+            nav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
     </script>
   </body>
   </html>
